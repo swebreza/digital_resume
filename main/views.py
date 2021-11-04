@@ -17,10 +17,7 @@ from . forms import ContactForm
 
 class IndexView(generic.TemplateView):
 	template_name = "main/index.html"
-	# def prof(template_name,request):
-	# 	profile = UserProfile.objects.all()
-	# 	return render(request, template_name, {'profile': profile})
-
+	
 	def get_context_data(self, **kwargs):
 		context = super().get_context_data(**kwargs)
 		
@@ -78,3 +75,16 @@ class BlogView(generic.ListView):
 class BlogDetailView(generic.DetailView):
 	model = Blog
 	template_name = "main/blog-detail.html"
+
+class CertificateView(generic.ListView):
+	model = Certificate
+	template_name = "main/certificate.html"
+	paginate_by = 10
+	
+	def get_queryset(self):
+		return super().get_queryset().filter(is_active=True)
+
+
+class CertificateDetailView(generic.DetailView):
+	model = Certificate
+	template_name = "main/certificate-detail.html"

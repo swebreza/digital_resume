@@ -146,12 +146,22 @@ class Certificate(models.Model):
     class Meta:
         verbose_name_plural = 'Certificates'
         verbose_name = 'Certificate'
-    image = models.ImageField(blank=True, null=True, upload_to="blog")
+        ordering = ["name"]
+    image = models.ImageField(blank=True, null=True, upload_to="certificate")
     date = models.DateTimeField(blank=True, null=True)
-    name = models.CharField(max_length=50, blank=True, null=True)
+    name = models.CharField(max_length=200, blank=True, null=True)
     title = models.CharField(max_length=200, blank=True, null=True)
     description = models.CharField(max_length=500, blank=True, null=True)
+    slug = models.SlugField(blank=True, null=True)
     is_active = models.BooleanField(default=True)
 
+    def save(self, *args, **kwargs):
+        if not self.id:
+            self.slug = slugify(self.title)
+        super(Certificate, self).save(*args, **kwargs)
+
     def __str__(self):
-        return self.name
+        return self.title
+
+    def get_absolute_url(self):
+        return f"/certificate/{'slug':self.slug}"

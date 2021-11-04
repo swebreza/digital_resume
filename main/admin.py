@@ -7,10 +7,7 @@ from .models import Blog,Certificate,ContactProfile,Media,Portfolio,Skill,Testim
 class UserProfileAdmin(admin.ModelAdmin):
 	list_display = ('id', 'user',)
 
-# class UserProfilee(admin.ModelAdmin):
-#     list_display_links=('id','user','email')
 
-# admin.site.register(UserProfile,UserProfilee)
 
 @admin.register(ContactProfile)
 class ContactAdmin(admin.ModelAdmin):
@@ -37,6 +34,7 @@ class BlogAdmin(admin.ModelAdmin):
 @admin.register(Certificate)
 class CertificateAdmin(admin.ModelAdmin):
     list_display = ('id','name')
+    readonly_fields = ('slug',)
 
 @admin.register(Skill)
 class SkillAdmin(admin.ModelAdmin):
