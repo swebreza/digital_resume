@@ -1,9 +1,9 @@
 # digital_resume
 Package used for this project.
-django = "*"
-pillow = "*"
-django-ckeditor = "*"
-gunicorn = "*"
+*django = "*"
+*pillow = "*"
+*django-ckeditor = "*"
+*gunicorn = "*"
 
 To get started with this project. download latest version of python and add it to your path variable.
 
