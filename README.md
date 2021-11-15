@@ -11,7 +11,6 @@ get to the terminal and install pipenv
 
 `pip install pipenv     `
 
-clone this project.
 
 then create a virtual server 
 `pipenv shell    `
@@ -19,3 +18,9 @@ then create a virtual server
 install all th other components requried.
 
 `pipenv install django`
+`pipenv install pillow`  
+`pipenv install django-ckeditor`
+`pipenv install gunicorn`
+
+clone this project.
+run some migrations and you are ready to go.`
