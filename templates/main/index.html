@@ -8,81 +8,82 @@
 Start Content
 ================================= -->
 <section>
-      <div class="bannerSection">
-        <div class="container">
-          <div class="row g-4 g-md-3  align-items-center">
-            <div class="col-md-auto order-md-last">
-              <div class="bannerUserImg">
-                <img src="{{me.userprofile.avatar.url}}" alt="...">
-              </div>
-            </div>
-            <div class="col-md">
-              <div class="bannerContent">
-                <h1 class="xlTitle pb-3">Hi, I’m {{me.first_name}}, <br> {{me.userprofile.title}}</h1>
-                <p>{{me.userprofile.bio}}</p>
-                <div class="bannerBtnCol">
-                  <div class="row">
-                    <div class="col-auto">
-                      <a download href="{{me.userprofile.cv.url}}" class="btn btnPrimary">Download Resume</a>
-                    </div>
-                    <div class="col-auto">
-                      <a href="{% url 'main:contact' %}" class="btn btnOutline">Contact</a>
-                    </div>
-                  </div>
+  <div class="bannerSection">
+    <div class="container">
+      <div class="row g-4 g-md-3  align-items-center">
+        <div class="col-md-auto order-md-last">
+          <div class="bannerUserImg">
+            <img src="{{me.userprofile.avatar.url}}" alt="...">
+          </div>
+        </div>
+        <div class="col-md">
+          <div class="bannerContent">
+            <h1 class="xlTitle pb-3">Hi, I’m {{me.first_name}}, <br> {{me.userprofile.title}}</h1>
+            <p>{{me.userprofile.bio}}</p>
+            <div class="bannerBtnCol">
+              <div class="row">
+                <div class="col-auto">
+                  <a download href="{{me.userprofile.cv.url}}" class="btn btnPrimary">Download Resume</a>
+                </div>
+                <div class="col-auto">
+                  <a href="{% url 'main:contact' %}" class="btn btnOutline">Contact</a>
                 </div>
               </div>
             </div>
           </div>
         </div>
       </div>
-</section> 
+    </div>
+  </div>
+</section>
 
 <!-- Skills -->
 <section>
-      <div class="sectionSpace pt-0">
-        <div class="container">
-          <div class="row">
-            <div class="col-md-auto">
-              <div class="keySkillCol">
-                <h4 class="smTitle pb-3">Key Skills</h4>
-                {% for skill in me.userprofile.skills.all %}
-                {% if skill.is_key_skill %}
-                <div class="keySkillCard">
-                  <div class="ksIconCol">
-                    <img src="{{skill.image.url}}" alt="..." style="width: 40px;">
-                  </div>
-                  <span class="ksText">{{skill.name}}</span>
-                </div>
-                {% endif %}
-                {% endfor %}
-               </div>
+  <div class="sectionSpace pt-0">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-auto">
+          <div class="keySkillCol">
+            <h4 class="smTitle pb-3">Key Skills</h4>
+            {% for skill in me.userprofile.skills.all %}
+            {% if skill.is_key_skill %}
+            <div class="keySkillCard">
+              <div class="ksIconCol">
+                <img src="{{skill.image.url}}" alt="..." style="width: 40px;">
+              </div>
+              <span class="ksText">{{skill.name}}</span>
             </div>
-            <div class="col-md">
-              <h4 class="smTitle pb-3">Coding Skills</h4>
+            {% endif %}
+            {% endfor %}
+          </div>
+        </div>
+        <div class="col-md">
+          <h4 class="smTitle pb-3">Coding Skills</h4>
+          <div class="progressCol">
+            <div class="progressCard">
+              {% for skill in me.userprofile.skills.all %}
               <div class="progressCol">
-                <div class="progressCard">
-                  {% for skill in me.userprofile.skills.all %}
-                  <div class="progressCol">
-                    <span class="progressLbl">{{skill.name}}</span>
-                    <div class="row g-2 align-items-center">
-                      <div class="col">
-                        <div class="progress progressStyle">
-                          <div class="progress-bar" role="progressbar" style="width: {{skill.score}}%" aria-valuenow="{{skill.score}}" aria-valuemin="0" aria-valuemax="100"></div>
-                        </div>
-                      </div>
-                      <div class="col-auto">
-                        <span class="pLbl">{{skill.score}}%</span>
-                      </div>
+                <span class="progressLbl">{{skill.name}}</span>
+                <div class="row g-2 align-items-center">
+                  <div class="col">
+                    <div class="progress progressStyle">
+                      <div class="progress-bar" role="progressbar" style="width: {{skill.score}}%"
+                        aria-valuenow="{{skill.score}}" aria-valuemin="0" aria-valuemax="100"></div>
                     </div>
                   </div>
-                  {% endfor %}
-                 
+                  <div class="col-auto">
+                    <span class="pLbl">{{skill.score}}%</span>
+                  </div>
                 </div>
               </div>
+              {% endfor %}
+
             </div>
           </div>
         </div>
       </div>
+    </div>
+  </div>
 </section>
 <!-- Skills -->
 
@@ -117,9 +118,9 @@ Start Content
             </div>
             {% endif %}
             {% endfor %}
-            
+
           </div>
-        </div>            
+        </div>
         <div class="cert-swiper-button-next swiper-button-next swiperBtnStyle"></div>
         <div class="cert-swiper-button-prev swiper-button-prev swiperBtnStyle"></div>
         <div class="swiper-pagination swiperPaginationStyle posInitial"></div>
@@ -131,109 +132,109 @@ Start Content
 
 <!-- Work -->
 <section>
-      <div class="sectionSpace">
-        <div class="container">
-          <div class="portfolioCol">
-            <div class="row pb-3">
-              <div class="col">
-                <h4 class="smText regular">Featured Work</h4>
-              </div>
-              <div class="col-auto">
-                <a href="javascript:void(0)" class="simpleLink">View all</a>
-              </div>
-            </div>
-            {% for pt in portfolio %}
-            {% if pt.is_active %}
-            <div class="portfolioCard">
-              <div class="row g-4 align-items-center">
-                <div class="col-md-auto">
-                  <div class="portfolioImgCol">
-                    <a href="{% url 'main:portfolio' slug=pt.slug %}"><img src="{{pt.image.url}}" alt="..."></a>
-                  </div>
-                </div>
-                <div class="col-md">
-                  <div class="portfolioContentCol">
-                    <h4 class="lgTitle"><a href="{% url 'main:portfolio' slug=pt.slug %}">{{pt.name}}</a></h4>
-                    <ul class="portfolioOption">
-                      <li><span class="dateLbl">{{pt.date.year}}</span></li>
-                    </ul>
-                    <p>{{pt.body|safe}}</p>
-                  </div>
-                </div>
-              </div>
-            </div>
-            {% endif %}
-            {% endfor %}
-           
+  <div class="sectionSpace">
+    <div class="container">
+      <div class="portfolioCol">
+        <div class="row pb-3">
+          <div class="col">
+            <h4 class="smText regular">Featured Work</h4>
           </div>
-          <div class="testimonialCol">
-            <h4 class="smText regular d-block">Testimonials</h4>
-            <div class="testimonialSlider">
-              <div class="swiper testimonialSwiper">
-                <div class="swiper-wrapper">
-                  {% for tm in testimonials %}
-                  {% if tm.is_active %}
-                  <div class="swiper-slide">
-                    <div class="testimonialCard">
-                      <div class="row align-items-center">
-                        <div class="col-sm-auto">
-                          <div class="tImgCol">
-                            <img src="{{tm.thumbnail.url}}" alt="...">
-                          </div>
-                        </div>
-                        <div class="col-sm">
-                          <div class="tContentCol">
-                            <h4 class="xsTitle bold">{{tm.name}}</h4>
-                            <p>{{tm.quote}}</p>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  {% endif %}
-                  {% endfor %}
-                 
-                </div>
-                <div class="test-swiper-button-next swiper-button-next swiperBtnStyle"></div>
-                <div class="test-swiper-button-prev swiper-button-prev swiperBtnStyle"></div>
+          <div class="col-auto">
+            <a href="javascript:void(0)" class="simpleLink">View all</a>
+          </div>
+        </div>
+        {% for pt in portfolio %}
+        {% if pt.is_active %}
+        <div class="portfolioCard">
+          <div class="row g-4 align-items-center">
+            <div class="col-md-auto">
+              <div class="portfolioImgCol">
+                <a href="{% url 'main:portfolio' slug=pt.slug %}"><img src="{{pt.image.url}}" alt="..."></a>
               </div>
-
-
+            </div>
+            <div class="col-md">
+              <div class="portfolioContentCol">
+                <h4 class="lgTitle"><a href="{% url 'main:portfolio' slug=pt.slug %}">{{pt.name}}</a></h4>
+                <ul class="portfolioOption">
+                  <li><span class="dateLbl">{{pt.date.year}}</span></li>
+                </ul>
+                <p>{{pt.body|safe}}</p>
+              </div>
             </div>
           </div>
         </div>
+        {% endif %}
+        {% endfor %}
+
       </div>
+      <div class="testimonialCol">
+        <h4 class="smText regular d-block">Testimonials</h4>
+        <div class="testimonialSlider">
+          <div class="swiper testimonialSwiper">
+            <div class="swiper-wrapper">
+              {% for tm in testimonials %}
+              {% if tm.is_active %}
+              <div class="swiper-slide">
+                <div class="testimonialCard">
+                  <div class="row align-items-center">
+                    <div class="col-sm-auto">
+                      <div class="tImgCol">
+                        <img src="{{tm.thumbnail.url}}" alt="...">
+                      </div>
+                    </div>
+                    <div class="col-sm">
+                      <div class="tContentCol">
+                        <h4 class="xsTitle bold">{{tm.name}}</h4>
+                        <p>{{tm.quote}}</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              {% endif %}
+              {% endfor %}
+
+            </div>
+            <div class="test-swiper-button-next swiper-button-next swiperBtnStyle"></div>
+            <div class="test-swiper-button-prev swiper-button-prev swiperBtnStyle"></div>
+          </div>
+
+
+        </div>
+      </div>
+    </div>
+  </div>
 </section>
 <!-- Work -->
 
 <!-- posts -->
 <section>
-      <div class="sectionSpaceSm lightBg">
-        <div class="container">
-          <div class="row pb-3">
-            <div class="col">
-              <h4 class="smText regular">Recent posts</h4>
-            </div>
-            <div class="col-auto">
-              <a href="{% url 'main:blogs' %}" class="simpleLink">View all</a>
-            </div>
+  <div class="sectionSpaceSm lightBg">
+    <div class="container">
+      <div class="row pb-3">
+        <div class="col">
+          <h4 class="smText regular">Recent posts</h4>
+        </div>
+        <div class="col-auto">
+          <a href="{% url 'main:blogs' %}" class="simpleLink">View all</a>
+        </div>
+      </div>
+      <div class="row g-3">
+        {% for b in blogs %}
+        {% if b.is_active %}
+        <div class="col-lg-6">
+          <div class="cardStyle1">
+            <h4 class="mdTitle cs1Title"><a href="{% url 'main:blog' slug=b.slug %}">{{b.name}}</a></h4>
+            <ul class="cardOptionCol">
+              <li>{{b.timestamp.date}}</li>
+              <li>{{b.author}}</li>
+            </ul>
+            <p>{{b.description}}</p>
           </div>
-          <div class="row g-3">
-            {% for b in blogs %}
-            {% if b.is_active %}
-            <div class="col-lg-6">
-              <div class="cardStyle1">
-                <h4 class="mdTitle cs1Title"><a href="{% url 'main:blog' slug=b.slug %}">{{b.name}}</a></h4>
-                <ul class="cardOptionCol">
-                  <li>{{b.timestamp.date}}</li>
-                  <li>{{b.author}}</li>
-                </ul>
-                <p>{{b.description}}</p>
-              </div>
-            </div>
-            {% endif %}
-            {% endfor %}
-            <!-- <div class="col-lg-6">
+        </div>
+        {% endif %}
+        {% endfor %}
+        <!-- <div class="col-lg-6">
               <div class="cardStyle1">
                 <h4 class="mdTitle cs1Title"><a href="javascript:void(0)">Using code to structure your marketplace</a></h4>
                 <ul class="cardOptionCol">
@@ -243,9 +244,9 @@ Start Content
                 <p>Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint. Velit officia consequat duis enim velit mollit. Exercitation veniam consequat sunt nostrud amet.</p>
               </div>
             </div> -->
-          </div>
-        </div>
       </div>
+    </div>
+  </div>
 </section>
 <!-- posts -->
 <!-- ================================
