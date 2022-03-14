@@ -1,3 +1,5 @@
+This App is deployed [here](https://digital-resume-suweb.herokuapp.com/)
+
 # digital_resume
 Package used for this project.
 *django = "*"
