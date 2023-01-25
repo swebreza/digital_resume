@@ -1,4 +1,4 @@
-This App is deployed [here](https://digital-resume-suweb.herokuapp.com/)
+This App is deployed [here](https://swebreza.azurewebsites.net/)
 
 # digital_resume
 Package used for this project.
