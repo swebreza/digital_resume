@@ -60,4 +60,4 @@ jobs:
         with:
           app-name: 'swebreza'
           slot-name: 'Production'
-          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_34B6B719CD8D4CBA914D1F42F71DEA52 }}
+          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_427798DA19B646AFAD832FC4C579C48B }}
